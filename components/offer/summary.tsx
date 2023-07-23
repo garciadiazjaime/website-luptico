@@ -1,9 +1,11 @@
 export default function Summary({
   days,
   price,
+  selectedCabin
 }: {
   days: string[];
   price: number;
+  selectedCabin: number
 }) {
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -22,7 +24,7 @@ export default function Summary({
             border: "1px solid black",
             background: !days.length ? "#CCC" : "",
           }}
-          disabled={!days.length}
+          disabled={!days.length && !selectedCabin}
         >
           Reserve
         </button>

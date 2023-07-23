@@ -47,7 +47,7 @@ export default function Day({
       <div style={{ margin: "6px 0" }}>
         {day.getDate()} / {day.getMonth()}
       </div>
-      <div>{formatter.format(price)}</div>
+      <div>{!isBlock && formatter.format(price)}</div>
     </div>
   );
 }
