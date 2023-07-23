@@ -1,49 +1,28 @@
+import { useState } from "react";
+const days = [
+  "sunday",
+  "monday",
+  "tuesday",
+  "wednesday",
+  "thursday",
+  "friday",
+  "saturday",
+];
+
 export default function Offer() {
-  const formatter = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-  });
-  const price = 59;
+  const [selectedDays, setSelectedDays] = useState<string[]>([]);
   const tomorrow = new Date();
-  const blockDates = [6];
   tomorrow.setDate(tomorrow.getDate() + 1);
 
   const weekAfter = new Date(tomorrow);
   weekAfter.setDate(weekAfter.getDate() + 7);
 
-  const days = [
-    "sunday",
-    "monday",
-    "tuesday",
-    "wednesday",
-    "thursday",
-    "friday",
-    "saturday",
-  ];
+  const dayClickHandler = (day: string) => {
+    const newDays = !selectedDays.includes(day)
+      ? [...selectedDays, day]
+      : selectedDays.filter((item) => item !== day);
 
-  const getDay = (index: number) => {
-    const day = new Date();
-    day.setDate(day.getDate() + index);
-
-    const isBlock = blockDates.includes(day.getDay());
-
-    return (
-      <div
-        style={{
-          padding: 20,
-          border: "1px solid black",
-          width: 120,
-          cursor: isBlock ? "" : "pointer",
-          backgroundColor: isBlock ? '#DDD' : ''
-        }}
-      >
-        <div style={{ textTransform: "capitalize" }}>{days[day.getDay()]}</div>
-        <div style={{ margin: "6px 0" }}>
-          {day.getDate()} / {day.getMonth()}
-        </div>
-        <div>{formatter.format(price)}</div>
-      </div>
-    );
+    setSelectedDays(newDays);
   };
 
   return (
@@ -58,9 +37,65 @@ export default function Offer() {
         }}
       >
         {days.map((day, index) => (
-          <div key={day}>{getDay(index + 1)}</div>
+          <Day
+            key={day}
+            index={index + 1}
+            selectedDays={selectedDays}
+            setSelectedDays={dayClickHandler}
+          />
         ))}
       </div>
     </div>
   );
 }
+
+const Day = ({
+  index,
+  selectedDays,
+  setSelectedDays,
+}: {
+  index: number;
+  selectedDays: string[];
+  setSelectedDays: (day: string) => void;
+}) => {
+  const formatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
+  const price = 59;
+  const blockDates = [6];
+
+  const day = new Date();
+  day.setDate(day.getDate() + index);
+
+  const isBlock = blockDates.includes(day.getDay());
+
+  const dayClickHandler = () => {
+    if (!isBlock) {
+        setSelectedDays(`${day.getMonth()}-${day.getDate()}`);
+    }
+  };
+
+  const isDaySelected = selectedDays.includes(
+    `${day.getMonth()}-${day.getDate()}`
+  );
+
+  return (
+    <div
+      style={{
+        padding: 20,
+        border: "1px solid black",
+        width: 120,
+        cursor: isBlock ? "" : "pointer",
+        backgroundColor: isBlock ? "#DDD" : isDaySelected ? "#AAF" : "",
+      }}
+      onClick={dayClickHandler}
+    >
+      <div style={{ textTransform: "capitalize" }}>{days[day.getDay()]}</div>
+      <div style={{ margin: "6px 0" }}>
+        {day.getDate()} / {day.getMonth()}
+      </div>
+      <div>{formatter.format(price)}</div>
+    </div>
+  );
+};
