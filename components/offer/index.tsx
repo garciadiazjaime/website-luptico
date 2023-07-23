@@ -1,7 +1,10 @@
 import { useState } from "react";
 
 import Day from "./day";
+import Summary from './summary'
 import { days } from './support'
+
+const price = 59;
 
 export default function Offer() {
   const [selectedDays, setSelectedDays] = useState<string[]>([]);
@@ -36,9 +39,12 @@ export default function Offer() {
             index={index + 1}
             selectedDays={selectedDays}
             setSelectedDays={dayClickHandler}
+            price={price}
           />
         ))}
       </div>
+
+      <Summary days={selectedDays} price={price} />
     </div>
   );
 }

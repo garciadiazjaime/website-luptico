@@ -1,19 +1,20 @@
-import { days } from './support'
+import { days } from "./support";
 
 export default function Day({
   index,
   selectedDays,
   setSelectedDays,
+  price,
 }: {
   index: number;
   selectedDays: string[];
   setSelectedDays: (day: string) => void;
+  price: number;
 }) {
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
   });
-  const price = 59;
   const blockDates = [6];
 
   const day = new Date();
