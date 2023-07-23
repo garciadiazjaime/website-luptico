@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link"
 
 export default function Cabins() {
   const items = [
@@ -6,19 +7,22 @@ export default function Cabins() {
       link: "https://www.airbnb.com/rooms/897016284894923633",
       image: "/cabins/cabin-1/front.webp",
       backgroundColor: "#DE3151",
-      name: "Cabaña #1",
+      name: "Cabin #1",
+      target: "_blank",
     },
     {
       link: "https://www.airbnb.com/rooms/901621862087069881",
       image: "/cabins/cabin-2/bedroom.webp",
       backgroundColor: "#d93b30",
-      name: "Cabaña #2",
+      name: "Cabin #2",
+      target: "_blank",
     },
     {
       link: "https://www.airbnb.com/rooms/901624640241144955",
       image: "/cabins/cabin-3/kitchen.webp",
       backgroundColor: "#bd196d",
-      name: "Cabaña #3",
+      name: "Cabin #3",
+      target: "_blank",
     },
   ];
   return (
@@ -30,16 +34,15 @@ export default function Cabins() {
       }}
     >
       {items.map((item) => (
-        <a
+        <Link
           key={item.backgroundColor}
           href={item.link}
           style={{ backgroundColor: item.backgroundColor, fontSize: 24 }}
-          target="_blank"
-          rel="noopener noreferrer"
+          target={item.target}
         >
           <Image src={item.image} alt="" width={360} height={480} />
           <div style={{ padding: "20px 10px 40px" }}>{item.name}</div>
-        </a>
+        </Link>
       ))}
     </section>
   );

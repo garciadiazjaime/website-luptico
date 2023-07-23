@@ -1,3 +1,4 @@
+import Link from "next/link"
 export default function Header() {
   return (
     <div
@@ -11,7 +12,7 @@ export default function Header() {
         fontSize: 30,
       }}
     >
-      <h1>Lúptico | Valle de Guadalupe</h1>
+      <h1><Link href="/">Lúptico | Valle de Guadalupe</Link></h1>
     </div>
   );
 }
