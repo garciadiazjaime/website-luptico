@@ -3,15 +3,12 @@
 import Image from "next/image";
 
 import Cabins from "@/components/cabins";
-import Offer from "@/components/offer"
 
 export default function Home() {
   return (
     <main>
       <div style={{ margin: "40px auto 0", maxWidth: 1120 }}>
         <Cabins />
-
-        <Offer />
 
         <a
           href="https://goo.gl/maps/hDkTf1zpzJijVFZG6"
