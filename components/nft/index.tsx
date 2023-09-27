@@ -43,7 +43,7 @@ export default function NFT() {
     }
 
     setOwnedNft({
-      image: nfts[0].metadata.image,
+      image: nfts[0].metadata.animation_url || nfts[0].metadata.image,
       name: nfts[0].metadata.name,
     });
   };
