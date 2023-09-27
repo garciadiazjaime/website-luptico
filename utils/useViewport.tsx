@@ -1,7 +1,9 @@
+"use client";
+
 import { useState, useEffect } from "react";
 
 export default function useViewport() {
-  const [width, setWidth] = useState(window.innerWidth);
+  const [width, setWidth] = useState(0);
 
   useEffect(() => {
     const handleWindowResize = () => setWidth(window.innerWidth);
