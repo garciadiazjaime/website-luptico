@@ -3,13 +3,11 @@
 import Image from "next/image";
 
 import Cabins from "@/components/cabins";
-import NFT from "@/components/nft";
 
 export default function Home() {
   return (
     <main>
       <div style={{ margin: "40px auto 0", maxWidth: 1120 }}>
-        <NFT />
         <Cabins />
 
         <a
