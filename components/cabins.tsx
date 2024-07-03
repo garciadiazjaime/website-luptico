@@ -1,26 +1,24 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import useViewport from "@/utils/useViewport";
-
 const items = [
   {
-    link: "https://www.airbnb.com/rooms/897016284894923633",
-    image: "/cabins/cabin-1/original/front.jpg",
-    backgroundColor: "#DE3151",
+    link: "https://www.airbnb.com/rooms/1108924900868036540",
+    image: "/cabins/cabin-1/out-front-2.webp",
+    backgroundColor: "#bd196d",
     name: "Cabin #1",
     target: "_blank",
   },
   {
-    link: "https://www.airbnb.com/rooms/901621862087069881",
-    image: "/cabins/cabin-2/original/front.jpg",
-    backgroundColor: "#d93b30",
+    link: "https://www.airbnb.com/rooms/1108949448591364914",
+    image: "/cabins/cabin-2/view.webp",
+    backgroundColor: "#bd196d",
     name: "Cabin #2",
     target: "_blank",
   },
   {
-    link: "https://www.airbnb.com/rooms/901624640241144955",
-    image: "/cabins/cabin-3/original/front.jpg",
+    link: "https://www.airbnb.com/rooms/1108951790286233460",
+    image: "/cabins/cabin-3/out-front-2.webp",
     backgroundColor: "#bd196d",
     name: "Cabin #3",
     target: "_blank",
@@ -28,53 +26,44 @@ const items = [
 ];
 
 export default function Cabins() {
-  const { width } = useViewport();
-  const breakpoint = 620;
-
-  const styles = {
-    section:
-      width < breakpoint
-        ? {
-            flexDirection: "column" as "column",
-          }
-        : {},
-    link: width < breakpoint ? { marginBottom: 40 } : {},
-    image:
-      width < breakpoint
-        ? {
-            width: "100%",
-          }
-        : {},
-  };
-
   return (
     <section
       style={{
         display: "flex",
         justifyContent: "space-between",
         color: "white",
-        ...styles.section,
+        gap: 12,
       }}
     >
-      {items.map((item) => (
+      {items.map((item, index) => (
         <Link
-          key={item.backgroundColor}
+          key={index}
           href={item.link}
           style={{
-            backgroundColor: item.backgroundColor,
             fontSize: 24,
-            ...styles.link,
+            textTransform: "uppercase",
+            fontWeight: "bold",
+            display: "block",
+            marginBottom: 60,
           }}
           target={item.target}
         >
           <Image
             src={item.image}
-            alt=""
+            alt={item.name}
             width={360}
             height={480}
-            style={styles.image}
+            style={{ display: "block", width: "100%", maxHeight: "auto" }}
           />
-          <div style={{ padding: "20px 10px 40px" }}>{item.name}</div>
+          <div
+            style={{
+              padding: "20px 10px",
+              backgroundColor: "#bd196d",
+              color: "white",
+            }}
+          >
+            {item.name}
+          </div>
         </Link>
       ))}
     </section>
