@@ -17,7 +17,7 @@ export default function Home() {
           }}
         >
           Welcome to our cozy loft brick cabin in the heart of Valle de
-          Guadalupe! less than a mile from the main road, it's your perfect
+          Guadalupe! less than a mile from the main road, it&apos;s your perfect
           headquarters to explore the valley. Our loft is a great space for 2-4
           guests, with a private full bathroom, thermic walls and roof, and
           ample living space, and privacy. Book now for a laid-back and private
