@@ -2,7 +2,7 @@
 
 Lúptico is a real estate project in the heart of Valle de Guadalupe, Mexico, featuring three cozy loft brick cabins.
 
-[https://luptico.com/](https://luptico.com/_)
+[https://luptico.com/](https://luptico.com/)
 
 ## Collaborators
 
