@@ -1,15 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useState } from "react";
 import Image from "next/image";
 
 import FollowUS from "@/app/FollowUs";
 import { useIsWeb3 } from "@/app/support";
 
 export default function Crypto() {
-  const isWeb3 = useIsWeb3();
   const [address, setAddress] = useState("");
+  const isWeb3 = useIsWeb3();
 
   const connectHandler = async () => {
     const accounts = await window.ethereum.request({
@@ -18,14 +17,6 @@ export default function Crypto() {
     console.log({ accounts });
     setAddress(accounts[0]);
   };
-
-  useEffect(() => {
-    if (!window.ethereum) {
-      const router = useRouter();
-      router.push("/");
-      return;
-    }
-  });
 
   if (!isWeb3) {
     return <></>;

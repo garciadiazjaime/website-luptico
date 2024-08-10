@@ -9,7 +9,7 @@ export const useIsWeb3 = () => {
     }
 
     setIsWeb3(true);
-  });
+  }, []);
 
   return isWeb3;
 };
